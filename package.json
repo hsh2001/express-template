@@ -9,7 +9,7 @@
   "license": "MIT",
   "keywords": [],
   "scripts": {
-    "start": "node build/main/index.js",
+    "start": "clear ; npm run build ; node build/main/index.js",
     "build": "tsc -p tsconfig.json",
     "fix": "npm run fix:lint ; npm run fix:prettier",
     "fix:prettier": "prettier \"src/**/*.ts\" --write",
@@ -32,5 +32,11 @@
   },
   "prettier": {
     "singleQuote": true
+  },
+  "dependencies": {
+    "@types/express": "^4.17.12",
+    "@types/fs-readdir-recursive": "^1.0.0",
+    "express": "^4.17.1",
+    "fs-readdir-recursive": "^1.1.0"
   }
 }
