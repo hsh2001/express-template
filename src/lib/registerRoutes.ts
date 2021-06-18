@@ -9,10 +9,9 @@ export default async function registerRoutes(app: Express): Promise<void> {
 
   for (const modulePath of dir) {
     const { ext } = parsePath(modulePath);
-    console.log({ ext });
 
     if (ext !== '.js') continue;
-    console.log([`${routeDirectoryPath}${modulePath}`, modulePath]);
+
     const {
       default: { method, handler },
     } = await import(`${routeDirectoryPath}/${modulePath}`);
@@ -24,8 +23,6 @@ export default async function registerRoutes(app: Express): Promise<void> {
     const routePath = `/${modulePath
       .replace('index.js', '')
       .replace('.js', '')}`;
-
-    console.log(routePath);
 
     app[method as 'get' | 'post'](routePath, handler);
   }
